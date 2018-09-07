@@ -1,6 +1,9 @@
 #!groovy
 
 node {
+	environment
+		DOCKER_HOST='tcp://127.0.0.1:4243'
+
    stage 'Docker image'
    echo 'Creando imagen de Docker'
    sh 'mvn clean package docker:build'
