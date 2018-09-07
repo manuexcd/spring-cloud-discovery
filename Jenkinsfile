@@ -12,7 +12,6 @@ node {
    echo "var mvnHome='${mvnHome}'"
    echo "var env.PATH='${env.PATH}'"
    
-   // -- Descarga código desde SCM
    echo 'Descargando código de SCM'
    sh 'rm -rf *'
    checkout scm
