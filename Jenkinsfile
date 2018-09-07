@@ -6,7 +6,6 @@ node {
    // ------------------------------------
    stage 'Compilar'
    
-   // -- Configura variables
    echo 'Configurando variables'
    def mvnHome = tool 'M3'
    env.PATH = "${mvnHome}/bin:${env.PATH}"
