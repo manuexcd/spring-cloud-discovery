@@ -17,7 +17,7 @@ node {
 	
 	stage 'Docker push'
 	echo 'Push imagen al docker hub'
-	sh 'docker login -u manuexcd -p xerezcd00'
+	sh 'docker login -u manuexcd -p contraseña'
 	sh 'docker push manuexcd/spring-cloud-discovery'
 	sh 'docker rmi spring-cloud-discovery:latest'
 	sh 'docker rmi manuexcd/spring-cloud-discovery:latest'
