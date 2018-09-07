@@ -7,21 +7,19 @@ node {
     	registryCredential = 'dockerhub'
 	}
 
-   stage 'Docker image'
-   echo 'Creando imagen de Docker'
-   sh 'mvn clean package docker:build'
-   
-   stage 'Docker tag'
-   echo 'Tag imagen'
-   sh 'docker tag spring-cloud-discovery manuexcd/spring-cloud-discovery'
-   
-   stage 'Docker push'
-   echo registry
-   echo registryCredential
-   docker.withRegistry( ‘’, registryCredential ) {
-	   echo 'Push imagen al docker hub'
-	   sh 'docker push manuexcd/spring-cloud-discovery'
-	   sh 'docker rmi spring-cloud-discovery:latest'
-	   sh 'docker rmi manuexcd/spring-cloud-discovery:latest'
-   }
+	stage 'Docker image'
+	echo 'Creando imagen de Docker'
+	sh 'mvn clean package docker:build'
+	
+	stage 'Docker tag'
+	echo 'Tag imagen'
+	sh 'docker tag spring-cloud-discovery manuexcd/spring-cloud-discovery'
+	
+	stage 'Docker push'
+	echo registry
+	echo registryCredential
+	echo 'Push imagen al docker hub'
+	sh 'docker push manuexcd/spring-cloud-discovery'
+	sh 'docker rmi spring-cloud-discovery:latest'
+	sh 'docker rmi manuexcd/spring-cloud-discovery:latest'
 }
