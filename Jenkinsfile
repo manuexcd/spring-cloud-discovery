@@ -3,7 +3,7 @@
 node {
    stage 'Docker image'
    echo 'Creando imagen de Docker'
-   sh 'sudo mvn clean package docker:build'
+   sh 'mvn clean package docker:build'
    
    stage 'Docker tag'
    echo 'Tag imagen'
