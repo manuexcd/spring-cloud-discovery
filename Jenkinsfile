@@ -16,8 +16,10 @@ node {
    sh 'docker tag spring-cloud-discovery manuexcd/spring-cloud-discovery'
    
    stage 'Docker push'
-   echo 'Push imagen al docker hub'
-   sh 'docker push manuexcd/spring-cloud-discovery'
-   sh 'docker rmi spring-cloud-discovery:latest'
-   sh 'docker rmi manuexcd/spring-cloud-discovery:latest'
+   docker.withRegistry( ‘’, registryCredential ) {
+	   echo 'Push imagen al docker hub'
+	   sh 'docker push manuexcd/spring-cloud-discovery'
+	   sh 'docker rmi spring-cloud-discovery:latest'
+	   sh 'docker rmi manuexcd/spring-cloud-discovery:latest'
+   }
 }
