@@ -16,8 +16,10 @@ node {
 	sh 'docker tag spring-cloud-discovery manuexcd/spring-cloud-discovery'
 	
 	stage 'Docker push'
+	withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
+		sh 'docker login -u $USER -p $PASS'
+	}
 	echo 'Push imagen al docker hub'
-	sh 'docker login -u manuexcd -p contraseña'
 	sh 'docker push manuexcd/spring-cloud-discovery'
 	sh 'docker rmi spring-cloud-discovery:latest'
 	sh 'docker rmi manuexcd/spring-cloud-discovery:latest'
