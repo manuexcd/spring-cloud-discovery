@@ -16,12 +16,9 @@ node {
 	sh 'docker tag spring-cloud-discovery manuexcd/spring-cloud-discovery'
 	
 	stage 'Docker push'
-	withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '<CREDENTIAL_ID>', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
-		sh 'echo uname=$USERNAME pwd=$PASSWORD'
-		echo 'Push imagen al docker hub'
-		sh 'docker login -u $USERNAME -p $PASSWORD'
-		sh 'docker push manuexcd/spring-cloud-discovery'
-		sh 'docker rmi spring-cloud-discovery:latest'
-		sh 'docker rmi manuexcd/spring-cloud-discovery:latest'
-	}
+	echo 'Push imagen al docker hub'
+	sh 'docker login -u manuexcd -p xerezcd00'
+	sh 'docker push manuexcd/spring-cloud-discovery'
+	sh 'docker rmi spring-cloud-discovery:latest'
+	sh 'docker rmi manuexcd/spring-cloud-discovery:latest'
 }
